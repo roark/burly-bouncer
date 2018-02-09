@@ -4,7 +4,7 @@
   "description": "Concise authorization library using promises",
   "main": "./dist/index.js",
   "scripts": {
-    "build": "babel src --presets babel-preset-es2015 --out-dir dist",
+    "build": "babel src --out-dir dist",
     "test": "mocha",
     "check-style": "standard",
     "prepublish": "npm run build"
@@ -14,18 +14,34 @@
   "devDependencies": {
     "await-sleep": "0.0.1",
     "babel-cli": "6.26.0",
-    "babel-preset-es2015": "6.24.1",
+    "babel-preset-env": "1.6.1",
     "mocha": "5.0.0",
     "standard": "*"
   },
-  "repository": { 
-    "type" : "git",
-    "url" : "https://github.com/roark/burly-bouncer.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roark/burly-bouncer.git"
   },
   "standard": {
     "ignore": [
       "/dist/",
       "/node_modules/"
+    ]
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "4.8.7",
+            "browsers": [
+              "last 2 versions"
+            ]
+          },
+          "useBuiltIns": true
+        }
+      ]
     ]
   }
 }

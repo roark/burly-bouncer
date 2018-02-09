@@ -28,7 +28,7 @@ class Bouncer {
     this._rules[ruleName] = ruleFunc
   }
 
-  async canUser (ruleName, args) {
+  canUser (ruleName, args) {
     const rule = this._rules[ruleName]
     const decision = new Decision(this._timeout)
 
