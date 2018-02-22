@@ -58,7 +58,7 @@ describe('Bouncer', function () {
       bouncer.canUser('not a rule').then((verdict) => {
         assert.equal(verdict.isAllow, false)
         assert.equal(verdict.isDeny, true)
-        assert.equal(verdict.reason, 'no rule set')
+        assert.equal(verdict.reason, 'no rule set: not a rule')
         done()
       })
     })
@@ -67,7 +67,7 @@ describe('Bouncer', function () {
       bouncer.canUser('errored rule').then((verdict) => {
         assert.equal(verdict.isAllow, false)
         assert.equal(verdict.isDeny, true)
-        assert.equal(verdict.reason, 'error interpreting rule')
+        assert.equal(verdict.reason, 'error interpreting rule: errored rule')
         done()
       })
     })

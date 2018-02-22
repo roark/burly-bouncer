@@ -10,7 +10,7 @@ class Bouncer {
   setRule (ruleName, ruleFunc) {
     // validate args
     if (typeof ruleName !== 'string') {
-      throw new Error('name must be a String')
+      throw new Error('rule name must be a String')
     }
 
     if (typeof ruleFunc !== 'function') {
@@ -21,7 +21,7 @@ class Bouncer {
 
     // verify rule doesn't exist
     if (typeof rule === 'function') {
-      throw new Error('rule already defined')
+      throw new Error('rule already defined: ' + ruleName)
     }
 
     // otherwise set rule
@@ -34,13 +34,13 @@ class Bouncer {
 
     if (rule === undefined || rule === null) {
       // rule undefined
-      decision.deny('no rule set')
+      decision.deny('no rule set: ' + ruleName)
     } else {
       // rule defined
       try {
         rule(decision, args)
       } catch (error) {
-        decision.deny('error interpreting rule')
+        decision.deny('error interpreting rule: ' + ruleName)
         this._reportError(error)
       }
     }
